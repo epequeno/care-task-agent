@@ -1,0 +1,93 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "P1",
+        "active": true,
+        "name": [{ "family": "Doe", "given": ["Jane"] }],
+        "gender": "female",
+        "birthDate": "1948-03-02",
+        "telecom": [{ "system": "phone", "value": "555-0100" }],
+        "address": [
+          { "line": ["1 Main St"], "city": "Dallas", "state": "TX", "postalCode": "75201" }
+        ],
+        "identifier": [{ "system": "http://hospital.example/mrn", "value": "MRN-12345" }]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Appointment",
+        "id": "A1",
+        "status": "booked",
+        "start": "2026-10-20T09:00:00Z",
+        "description": "Annual wellness visit",
+        "participant": [{ "actor": { "reference": "Patient/P1" }, "status": "accepted" }]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Appointment",
+        "id": "A2",
+        "status": "cancelled",
+        "start": "2026-09-01T14:00:00Z",
+        "description": "Follow-up",
+        "participant": [{ "actor": { "reference": "Patient/P1" }, "status": "declined" }]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "M1",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": { "text": "Lisinopril 10 mg" },
+        "authoredOn": "2026-08-15",
+        "subject": { "reference": "Patient/P1" }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "M2",
+        "status": "stopped",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "1191",
+              "display": "Metformin"
+            }
+          ]
+        },
+        "authoredOn": "2026-05-02",
+        "subject": { "reference": "Patient/P1" }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Task",
+        "id": "T1",
+        "status": "requested",
+        "intent": "order",
+        "priority": "urgent",
+        "description": "Repeat HbA1c before next visit",
+        "for": { "reference": "Patient/P1" }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Task",
+        "id": "T2",
+        "status": "completed",
+        "intent": "order",
+        "priority": "routine",
+        "description": "Book annual wellness visit",
+        "for": { "reference": "Patient/P1" }
+      }
+    }
+  ]
+}

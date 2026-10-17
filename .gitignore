@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Local-only values: project id, region, tokens, resource ids.
+LOCAL.md
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Cloud Run / gcloud
+.gcloudignore
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

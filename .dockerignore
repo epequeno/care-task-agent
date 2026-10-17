@@ -1,0 +1,14 @@
+# Nothing here belongs in the image, and .venv would otherwise be uploaded in full.
+.venv/
+.git/
+.gcloudignore
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+tests/
+fixtures/
+docs/
+RESULTS.md
+LOCAL.md
+.env
+.env.*

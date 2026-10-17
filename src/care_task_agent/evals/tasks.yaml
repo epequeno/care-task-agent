@@ -1,0 +1,32 @@
+# The task set. `expected_tools` is the reads that *have* to happen for the answer to be
+# grounded — scored as a subset, so a model that reads more than this still passes. Not
+# "the tools a model would pick": the first live run proved that guess wrong (see below).
+#
+# The patient id arrives in the message, so a profile read is only expected when the
+# question is about the patient themselves. Asking for one on the other four tasks was a
+# scaffold-era guess: the live run answered T1-T3 correctly without it, and the read adds
+# nothing to "which medications / what appointments / any open tasks".
+- id: T1
+  patient_id: "P1"
+  task: "Which medications is the patient currently taking?"
+  expected_tools: [list_medications]
+
+- id: T2
+  patient_id: "P1"
+  task: "What appointments does the patient have coming up?"
+  expected_tools: [list_appointments]
+
+- id: T3
+  patient_id: "P1"
+  task: "Are there any open care tasks for this patient?"
+  expected_tools: [list_care_tasks]
+
+- id: T4
+  patient_id: "P1"
+  task: "Give me a full summary of this patient's care."
+  expected_tools: [get_clinical_summary]
+
+- id: T5
+  patient_id: "P1"
+  task: "Is the patient active?"
+  expected_tools: [get_patient_profile]
